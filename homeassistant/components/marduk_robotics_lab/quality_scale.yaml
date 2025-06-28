@@ -1,0 +1,30 @@
+rules:
+  # Bronze (mandatory)
+  config-flow: done
+  entity-unique-id: done
+  action-setup:
+    status: exempt
+    comment: Integration does not register custom actions, uses built-in Home Assistant services.
+  
+  # Silver 
+  entity-unavailable: done
+  parallel-updates: done
+  auth:
+    status: exempt
+    comment: Authentication handled by robotics workbench, not required for this integration type.
+  
+  # Gold
+  devices: done
+  diagnostics: done
+  translations: done
+  
+  # Platinum
+  strict-typing:
+    status: todo
+    comment: Type hints implemented but not yet comprehensive across all modules.
+  async-dependencies:
+    status: done
+    comment: All dependencies use asyncio for non-blocking operations.
+  websession-injection:
+    status: exempt 
+    comment: Integration uses WebSocket connections, not HTTP sessions.

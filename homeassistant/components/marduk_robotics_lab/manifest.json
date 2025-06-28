@@ -1,0 +1,27 @@
+{
+  "domain": "marduk_robotics_lab",
+  "name": "Marduk's Robotics Lab",
+  "codeowners": ["@HyperCogWizard"],
+  "config_flow": true,
+  "documentation": "https://github.com/HyperCogWizard/ml-core",
+  "integration_type": "hub",
+  "iot_class": "local_push",
+  "quality_scale": "silver",
+  "requirements": [
+    "numpy>=1.21.0",
+    "msgpack>=1.0.0",
+    "websockets>=10.0"
+  ],
+  "zeroconf": [
+    {
+      "type": "_marduk-robotics._tcp.local.",
+      "name": "marduk-*"
+    }
+  ],
+  "dhcp": [
+    {
+      "hostname": "marduk-*",
+      "macaddress": "MA:RD:UK:*"
+    }
+  ]
+}
