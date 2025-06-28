@@ -1,0 +1,176 @@
+spawn_agent:
+  name: Spawn agent
+  description: Spawn a new agent kernel in the robotics lab.
+  fields:
+    agent_type:
+      name: Agent type
+      description: Type of agent to spawn (exploration, manipulation, planning, etc.)
+      required: true
+      example: "exploration"
+      selector:
+        select:
+          options:
+            - "exploration"
+            - "manipulation"
+            - "planning"
+            - "perception"
+            - "learning"
+            - "coordination"
+    agent_id:
+      name: Agent ID
+      description: Optional custom agent identifier
+      required: false
+      example: "explorer_001"
+      selector:
+        text:
+    cognitive_grammar:
+      name: Cognitive grammar
+      description: Cognitive programming language for the agent
+      required: false
+      default: "scheme"
+      selector:
+        select:
+          options:
+            - "scheme"
+            - "prolog"
+            - "javascript"
+            - "python"
+
+register_device:
+  name: Register device
+  description: Register a new robotics device in the lab.
+  fields:
+    device_id:
+      name: Device ID
+      description: Unique identifier for the device
+      required: true
+      example: "arm_001"
+      selector:
+        text:
+    device_type:
+      name: Device type
+      description: Type of robotics device
+      required: true
+      example: "robotic_arm"
+      selector:
+        select:
+          options:
+            - "robotic_arm"
+            - "mobile_base"
+            - "sensor_array"
+            - "gripper"
+            - "camera"
+            - "lidar"
+            - "imu"
+            - "force_sensor"
+    degrees_of_freedom:
+      name: Degrees of freedom
+      description: Number of controllable degrees of freedom
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 50
+          mode: box
+    sensor_channels:
+      name: Sensor channels
+      description: Number of sensor input channels
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 1000
+          mode: box
+    actuator_channels:
+      name: Actuator channels
+      description: Number of actuator output channels
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 1000
+          mode: box
+
+export_gguf:
+  name: Export GGUF
+  description: Export current lab state to GGUF format.
+  fields:
+    file_path:
+      name: File path
+      description: Path where to save the GGUF file
+      required: false
+      example: "/config/marduk_export.gguf"
+      selector:
+        text:
+    include_agents:
+      name: Include agents
+      description: Include agent states in export
+      required: false
+      default: true
+      selector:
+        boolean:
+    include_devices:
+      name: Include devices
+      description: Include device configurations in export
+      required: false
+      default: true
+      selector:
+        boolean:
+
+import_gguf:
+  name: Import GGUF
+  description: Import lab state from GGUF format.
+  fields:
+    file_path:
+      name: File path
+      description: Path to the GGUF file to import
+      required: true
+      example: "/config/marduk_import.gguf"
+      selector:
+        text:
+    merge_mode:
+      name: Merge mode
+      description: How to handle conflicts with existing data
+      required: false
+      default: "merge"
+      selector:
+        select:
+          options:
+            - "replace"
+            - "merge"
+            - "skip"
+
+modify_agent:
+  name: Modify agent
+  description: Modify an existing agent's parameters.
+  fields:
+    agent_id:
+      name: Agent ID
+      description: ID of the agent to modify
+      required: true
+      example: "explorer_001"
+      selector:
+        text:
+    learning_rate:
+      name: Learning rate
+      description: New learning rate for the agent
+      required: false
+      selector:
+        number:
+          min: 0.0001
+          max: 1.0
+          step: 0.0001
+          mode: box
+    exploration_factor:
+      name: Exploration factor
+      description: New exploration factor for the agent
+      required: false
+      selector:
+        number:
+          min: 0.0
+          max: 1.0
+          step: 0.01
+          mode: box

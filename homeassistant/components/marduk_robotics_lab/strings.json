@@ -1,0 +1,204 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Marduk's Robotics Lab Setup",
+        "description": "Configure connection to the robotics engineering workbench.",
+        "data": {
+          "host": "Workbench host",
+          "port": "Workbench port",
+          "name": "Lab name",
+          "gguf_path": "GGUF storage path (optional)",
+          "kernel_mode": "Kernel mode",
+          "cognitive_grammar": "Cognitive grammar"
+        }
+      },
+      "discovery_confirm": {
+        "title": "Discovered Marduk's Robotics Lab",
+        "description": "A robotics workbench was discovered at {host}:{port}. Configure additional settings.",
+        "data": {
+          "name": "Lab name",
+          "gguf_path": "GGUF storage path (optional)",
+          "kernel_mode": "Kernel mode",
+          "cognitive_grammar": "Cognitive grammar"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the robotics workbench. Please verify the host and port.",
+      "invalid_auth": "Invalid authentication credentials.",
+      "unknown": "Unknown error occurred during setup."
+    },
+    "abort": {
+      "already_configured": "This robotics lab is already configured.",
+      "cannot_connect": "Could not connect to the discovered workbench."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Marduk's Robotics Lab Options",
+        "description": "Configure advanced options for the robotics lab.",
+        "data": {
+          "gguf_path": "GGUF storage path",
+          "kernel_mode": "Kernel mode",
+          "cognitive_grammar": "Cognitive grammar"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "total_agents": {
+        "name": "Total agents"
+      },
+      "active_agents": {
+        "name": "Active agents"
+      },
+      "total_devices": {
+        "name": "Total devices"
+      },
+      "total_nodes": {
+        "name": "Hypergraph nodes"
+      },
+      "total_complexity": {
+        "name": "System complexity"
+      },
+      "system_status": {
+        "name": "System status"
+      }
+    },
+    "button": {
+      "spawn_agent": {
+        "name": "Spawn agent"
+      },
+      "export_gguf": {
+        "name": "Export GGUF"
+      },
+      "refresh_hypergraph": {
+        "name": "Refresh hypergraph"
+      },
+      "emergency_stop": {
+        "name": "Emergency stop"
+      }
+    },
+    "binary_sensor": {
+      "middleware_connected": {
+        "name": "Middleware connected"
+      },
+      "gguf_enabled": {
+        "name": "GGUF enabled"
+      },
+      "agents_active": {
+        "name": "Agents active"
+      }
+    },
+    "switch": {
+      "agent_learning": {
+        "name": "Agent learning"
+      },
+      "tensor_visualization": {
+        "name": "Tensor visualization"
+      },
+      "recursive_modification": {
+        "name": "Recursive modification"
+      }
+    }
+  },
+  "services": {
+    "spawn_agent": {
+      "name": "Spawn agent",
+      "description": "Spawn a new agent kernel in the robotics lab.",
+      "fields": {
+        "agent_type": {
+          "name": "Agent type",
+          "description": "Type of agent to spawn (exploration, manipulation, planning, etc.)"
+        },
+        "agent_id": {
+          "name": "Agent ID",
+          "description": "Optional custom agent identifier"
+        },
+        "cognitive_grammar": {
+          "name": "Cognitive grammar",
+          "description": "Cognitive programming language for the agent"
+        }
+      }
+    },
+    "register_device": {
+      "name": "Register device",
+      "description": "Register a new robotics device in the lab.",
+      "fields": {
+        "device_id": {
+          "name": "Device ID",
+          "description": "Unique identifier for the device"
+        },
+        "device_type": {
+          "name": "Device type",
+          "description": "Type of robotics device (arm, mobile_base, sensor_array, etc.)"
+        },
+        "degrees_of_freedom": {
+          "name": "Degrees of freedom",
+          "description": "Number of controllable degrees of freedom"
+        },
+        "sensor_channels": {
+          "name": "Sensor channels",
+          "description": "Number of sensor input channels"
+        },
+        "actuator_channels": {
+          "name": "Actuator channels",
+          "description": "Number of actuator output channels"
+        }
+      }
+    },
+    "export_gguf": {
+      "name": "Export GGUF",
+      "description": "Export current lab state to GGUF format.",
+      "fields": {
+        "file_path": {
+          "name": "File path",
+          "description": "Path where to save the GGUF file"
+        },
+        "include_agents": {
+          "name": "Include agents",
+          "description": "Include agent states in export"
+        },
+        "include_devices": {
+          "name": "Include devices",
+          "description": "Include device configurations in export"
+        }
+      }
+    },
+    "import_gguf": {
+      "name": "Import GGUF",
+      "description": "Import lab state from GGUF format.",
+      "fields": {
+        "file_path": {
+          "name": "File path",
+          "description": "Path to the GGUF file to import"
+        },
+        "merge_mode": {
+          "name": "Merge mode",
+          "description": "How to handle conflicts (replace, merge, skip)"
+        }
+      }
+    },
+    "modify_agent": {
+      "name": "Modify agent",
+      "description": "Modify an existing agent's parameters.",
+      "fields": {
+        "agent_id": {
+          "name": "Agent ID",
+          "description": "ID of the agent to modify"
+        },
+        "learning_rate": {
+          "name": "Learning rate",
+          "description": "New learning rate for the agent"
+        },
+        "exploration_factor": {
+          "name": "Exploration factor",
+          "description": "New exploration factor for the agent"
+        }
+      }
+    }
+  }
+}
