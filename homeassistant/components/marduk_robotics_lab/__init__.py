@@ -13,7 +13,7 @@ from homeassistant.exceptions import ConfigEntryNotReady
 
 from .const import DOMAIN, PLATFORMS
 from .coordinator import MardukCoordinator
-from .middleware import RoboticsMiddleware
+from .composable_middleware import ComposableRoboticsMiddleware
 from .models import MardukRoboticsData
 
 _LOGGER = logging.getLogger(__name__)
@@ -22,8 +22,8 @@ _LOGGER = logging.getLogger(__name__)
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up Marduk's Robotics Lab from a config entry."""
     
-    # Initialize robotics middleware abstraction
-    middleware = RoboticsMiddleware(hass, config_entry)
+    # Initialize composable robotics middleware
+    middleware = ComposableRoboticsMiddleware(hass, config_entry)
     
     # Create coordinator for distributed cognition
     coordinator = MardukCoordinator(hass, middleware, config_entry)
